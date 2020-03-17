@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/Templates/Principal.xhtml">
+
+            <ui:define name="content">
+                <p:panel style="border: 1px solid #eeeeee;
+                 background: #AFAFAF;
+                 color: #AFAFAF; 
+                 font-weight: bold" >
+
+            <p:panelGrid id="gridSegMenu" columns="2" columnClasses="ui-grid-col-2"
+                         layout="grid" styleClass="ui-panelgrid-blank" style="background-color: greenyellow;width:98%;align-items: center">
+                
+               
+
+            </p:panelGrid>
+            <p:spacer width="1" height="10" />
+            <h2 style="text-align: center; color:#4209ea !important">LISTA DE PRODUCTOS</h2>
+            <p:dataTable id="tbParque" 
+                         scrollable="true" 
+                         draggableColumns="true"                          
+                         scrollHeight="200" scrollWidth="98%"
+                         paginator="true"                                              
+                         rows="4"                                     
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{currentPage} DE {totalPages}"
+                         rowsPerPageTemplate="10,20,30,50" 
+                         var="item" 
+                         value="#{productoBean.lista}" 
+                         emptyMessage="SIN REGISTROS"
+                         reflow="true" 
+                         style="margin-top:20px">
+
+
+                <p:column headerText="ID" rendered="false">
+                    <h:outputText value="#{item.idProducto}" />
+                </p:column>
+                <p:column> 
+                    <f:facet name="header">
+                        <h:outputText value="DESCRIPCION" />
+                    </f:facet>
+                    <h:outputText value="#{item.descripcion}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="TIPO PRODUCTO" />
+                    </f:facet>
+                    <h:outputText value="#{item.tipo}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="ORIGEN" />
+                    </f:facet>
+                    <h:outputText value="#{item.origen}" />
+                </p:column>
+                <p:column> 
+                    <f:facet name="header">
+                        <h:outputText value="% DE VENTA" />
+                    </f:facet>                  
+                    <h:outputText value="#{item.porcVenta}" />
+                </p:column>
+               
+                
+            </p:dataTable>           
+        </p:panel>
+            </ui:define>
+
+            
+
+        </ui:composition>
+
+    </body>
+</html>
